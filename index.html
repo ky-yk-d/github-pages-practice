@@ -13,17 +13,6 @@
 </head>
 <body>
     <header>
-        <h1>TODAY</h1>
-    </header>
-    <div class="container">
-        <script>
-            // 日付を表示
-            var today = new Date();
-            var todayHtml = today.getFullYear() + '/' + (today.getMonth() + 1) + '/' + today.getDate();
-            document.write('<p class="date">' + todayHtml + '</p>');
-        </script>
-    </div>
-    <div class="main">
         <h1>こんにちは!こまどのGitHub Pagesにようこそ！</h1>
         <p>フロントエンドの練習に使っています。</p>
         <p>
@@ -32,11 +21,28 @@
         <p>
             はてなブログ；<a href="https://ky-yk-d.hatenablog.com/">こまどブログ</a>
         </p>
-    </div>
+    </header>
     <div class="container">
-        <p id="timer">00:00:00</p>
-        <div>
-            <button id="start_stop" class="btn btn-lg btn-primary">START</button>
+        <div class="contents">
+            <div class="main">
+                <h1>TODAY</h1>
+            </div>
+            <div>
+                <script>
+                    // 日付を表示
+                    var today = new Date();
+                    var todayHtml = today.getFullYear() + '/' + (today.getMonth() + 1) + '/' + today.getDate();
+                    document.write('<p class="date">' + todayHtml + '</p>');
+                </script>
+            </div>
+            <div>
+                <p id="timer">00:00:00</p>
+                <button id="start_stop" class="btn btn-lg btn-primary">START</button>
+            </div>
+        </div>
+        <div class="right">
+            <a class="twitter-timeline" data-width="300" data-height="1000" data-theme="dark" href="https://twitter.com/ky_yk_d?ref_src=twsrc%5Etfw">Tweets by ky_yk_d</a>
+            <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
         </div>
     </div>
     <script>
