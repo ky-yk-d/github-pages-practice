@@ -11,7 +11,7 @@ var vm = new Vue({
     methods: {
         createTask: function(){
             var new_id = this.tasks[this.tasks.length - 1].id + 1;
-            this.tasks.push({id: new_id, name: this.newTask, idDeleted: false});
+            this.tasks.push({id: new_id, name: this.newTask, isDeleted: false});
             this.newTask = '';
         },
         doneTask: function(task_id){
