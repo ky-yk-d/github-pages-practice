@@ -15,32 +15,70 @@
     <header>
         <h1>こんにちは!こまどのGitHub Pagesにようこそ！</h1>
         <p>フロントエンドの練習に使っています。</p>
-        <p>
-            Twitter : <a href="https://twitter.com/ky_yk_d">@ky_yk_d</a>
-        </p>
-        <p>
-            はてなブログ；<a href="https://ky-yk-d.hatenablog.com/">こまどブログ</a>
-        </p>
-        <p>
-            遊んでみる：<a href="./vue/index.html">Vue.jsで遊んでみる</a>
-        </p>
+        <table class="table table-striped">
+            <tbody>
+                <tr>
+                    <td>
+                        Twitter 
+                    </td>
+                    <td>
+                        <a href="https://twitter.com/ky_yk_d">@ky_yk_d</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>はてなブログ</td>
+                    <td><a href="https://ky-yk-d.hatenablog.com/">こまどブログ</a></td>
+                </tr>
+                <tr>
+                    <td>遊んでみる1</td>
+                    <td>
+                        <a href="./javascript/index.html">JavaScriptで遊んでみる</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        遊んでみる2
+                    </td>
+                    <td>
+                        <a href="./vue/index.html">Vue.jsで遊んでみる</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
     </header>
     <div class="container">
         <div class="contents">
             <div class="main">
-                <h1>TODAY</h1>
+                <h1>Who Am I</h1>
             </div>
             <div>
-                <script>
-                    // 日付を表示
-                    var today = new Date();
-                    var todayHtml = today.getFullYear() + '/' + (today.getMonth() + 1) + '/' + today.getDate();
-                    document.write('<p class="date">' + todayHtml + '</p>');
-                </script>
-            </div>
-            <div>
-                <p id="timer">00:00:00</p>
-                <button id="start_stop" class="btn btn-lg btn-primary">START</button>
+                <p>後で書く</p>
+                <table class="table table-striped">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th>カラム1</th>
+                            <th>カラム2</th>
+                            <th>カラム3</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>111</td>
+                            <td>222</td>
+                            <td>333</td>
+                        </tr>
+                        <tr>
+                            <td>aaa</td>
+                            <td>bbb</td>
+                            <td>ccc</td>
+                        </tr>
+                        <tr>
+                            <td>あああ</td>
+                            <td>いいい</td>
+                            <td>ううう</td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
         </div>
         <div class="right">
@@ -48,49 +86,5 @@
             <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
         </div>
     </div>
-    <script>
-        var start;
-        var timer_id;
-        // ゼロを追加する
-        var addZero = function(value){
-            if (value < 10){
-                value = '0' + value;
-            }
-            return value;
-        }
-        document.getElementById('start_stop').addEventListener('click', function(){
-            if (this.innerHTML == 'START'){
-            start = new Date();
-            timer_id = setInterval(goTimer, 10);
-            // STOPボタンに切り替え
-            this.innerHTML = 'STOP';
-            this.classList.remove('btn-primary');
-            this.classList.add('btn-danger');
-            } else {
-                clearInterval(timer_id);
-                // STARTボタンに切り替え
-                this.innerHTML = 'START';
-                this.classList.remove('btn-danger');
-                this.classList.add('btn-primary');
-            }
-        });
-        // タイマーの処理
-        var goTimer = function(){
-            var now = new Date();
-            var milli = now.getTime() - start.getTime();
-            var seconds = Math.floor(milli / 1000);
-            var minutes = Math.floor(seconds / 60);
-            var hours = Math.floor(minutes / 60);
-
-            seconds = seconds - minutes * 60;
-            minutes = minutes - hours * 60;
-            // 0補完
-            hours = addZero(hours);
-            minutes = addZero(minutes);
-            seconds = addZero(seconds);
-            document.getElementById('timer').innerHTML = hours + ':' + minutes + ':' + seconds;
-        }
-
-    </script>
 </body>
 </html>

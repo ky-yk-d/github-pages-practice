@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>JavaScriptで遊んでみる</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="css/style.css" />
+    <script src="main.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div class="container header">
+        <h1>JavaScriptで遊んでみる</h1>
+        <a href="../index.html">ホームに戻る</a>
+    </div>
+    <div class="container">
+        <div class="contents">
+            <div class="main">
+                <h1>TODAY</h1>
+            </div>
+            <div>
+                <script>
+                    // 日付を表示
+                    var today = new Date();
+                    var todayHtml = today.getFullYear() + '/' + (today.getMonth() + 1) + '/' + today.getDate();
+                    document.write('<p class="date">' + todayHtml + '</p>');
+                </script>
+            </div>
+            <div>
+                <p id="timer">00:00:00</p>
+                <button id="start_stop" class="btn btn-lg btn-primary">START</button>
+            </div>
+        </div>
+
+    </div>
+    <script>
+        var start;
+        var timer_id;
+        // ゼロを追加する
+        var addZero = function(value){
+            if (value < 10){
+                value = '0' + value;
+            }
+            return value;
+        }
+        document.getElementById('start_stop').addEventListener('click', function(){
+            if (this.innerHTML == 'START'){
+            start = new Date();
+            timer_id = setInterval(goTimer, 10);
+            // STOPボタンに切り替え
+            this.innerHTML = 'STOP';
+            this.classList.remove('btn-primary');
+            this.classList.add('btn-danger');
+            } else {
+                clearInterval(timer_id);
+                // STARTボタンに切り替え
+                this.innerHTML = 'START';
+                this.classList.remove('btn-danger');
+                this.classList.add('btn-primary');
+            }
+        });
+        // タイマーの処理
+        var goTimer = function(){
+            var now = new Date();
+            var milli = now.getTime() - start.getTime();
+            var seconds = Math.floor(milli / 1000);
+            var minutes = Math.floor(seconds / 60);
+            var hours = Math.floor(minutes / 60);
+
+            seconds = seconds - minutes * 60;
+            minutes = minutes - hours * 60;
+            // 0補完
+            hours = addZero(hours);
+            minutes = addZero(minutes);
+            seconds = addZero(seconds);
+            document.getElementById('timer').innerHTML = hours + ':' + minutes + ':' + seconds;
+        }
+
+    </script>
+</body>
+</html>
