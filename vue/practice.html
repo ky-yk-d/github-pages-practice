@@ -14,7 +14,8 @@
         <a href="./index.html">戻る</a>
     </div>
     <div class="container">
-        <div id="app">
+        <div id="app" style="background-color:rgb(252, 217, 217);">
+            <h2 style="text-align: center">基本</h2>
             <table class="table table-striped">
                 <tbody>
                     <tr>
@@ -28,58 +29,154 @@
                     <tr>
                         <td>Mustache構文の中にJavaScript式を書ける</td>
                         <td><p>{{message.substring(1)}}</p></td>
-                        <tr>
-                            <td>Mustache構文にせずにディレクティブでも書ける</td>
-                            <td><p v-text="message"></p></td>
-                        </tr>
-                        <tr>
-                            <td>{{}}をそのまま表示する</td>
-                            <td><p v-pre>{{message}}</p></td>
-                        </tr>
-                        <tr>
-                            <td>通常はhtmlとしては解釈されない</td>
-                            <!-- クロスサイトスクリプティング対策になっている -->
-                            <td><p>{{htmlsample}}</p></td>
-                        </tr>
-                        <tr>
-                            <td>v-htmlディレクティブを使うとhtmlとして解釈される</td>
-                            <!-- （補足）ユーザ入力値の箇所など、信頼できないコンテンツには適用しない -->
-                            <td><p v-html="htmlsample"></p></td>
-                        </tr>
-                        <tr>
-                            <td>属性にJavaScript式の値を埋め込む時はv-bindを使う</td>
-                            <!-- （補足）ディレクティブのコロンの後方は引数  -->
-                            <td><a v-bind:href="urlsample">Twitter（@ky_yk_d）</a></td>
-                        </tr>
-                        <tr>
-                            <td>v-bindは省略構文もある</td>
-                            <td><a :href="urlsample">Twitter（@ky_yk_d）</a></td>
-                        </tr>
-                        <tr>
-                            <td>算出プロパティを使う</td>
-                            <td><p>{{localEmail}}</p></td>
-                        </tr>
-                        <tr>
-                            <td>メソッドで同じ内容を記載することもできるが、微妙に異なる（後述）</td>
-                            <td><p>{{localEmail2()}}</p></td>
-                        </tr>
-                    </tbody>
-                </table>
-                <!-- 算出プロパティとメソッドの違い -->
-                <div>
-                    <p>↓クリックを押すとメソッドの方だけ更新されて算出プロパティは更新されない</p>
-                    <form>
-                        <input type="button" v-on:click="onclick" value="クリック"/>
-                    </form>
-                    <p>算出プロパティ：{{randomc}}</p>
-                    <p>メソッド：{{randomm()}}</p>
-                    <p>現在日時：{{current}}</p>
-                    <p>メソッドは再描画時に常に評価されるが、算出プロパティはそれが依存するプロパティが変更されたときのみ評価される。</p>
-                </div>
+                    <tr>
+                        <td>Mustache構文にせずにディレクティブでも書ける</td>
+                        <td><p v-text="message"></p></td>
+                    </tr>
+                    <tr>
+                        <td>{{}}をそのまま表示する</td>
+                        <td><p v-pre>{{message}}</p></td>
+                    </tr>
+                    <tr>
+                        <td>通常はhtmlとしては解釈されない</td>
+                        <!-- クロスサイトスクリプティング対策になっている -->
+                        <td><p>{{htmlsample}}</p></td>
+                    </tr>
+                    <tr>
+                        <td>v-htmlディレクティブを使うとhtmlとして解釈される</td>
+                        <!-- （補足）ユーザ入力値の箇所など、信頼できないコンテンツには適用しない -->
+                        <td><p v-html="htmlsample"></p></td>
+                    </tr>
+                    <tr>
+                        <td>属性にJavaScript式の値を埋め込む時はv-bindを使う</td>
+                        <!-- （補足）ディレクティブのコロンの後方は引数  -->
+                        <td><a v-bind:href="urlsample">Twitter（@ky_yk_d）</a></td>
+                    </tr>
+                    <tr>
+                        <td>v-bindは省略構文もある</td>
+                        <td><a :href="urlsample">Twitter（@ky_yk_d）</a></td>
+                    </tr>
+                    <tr>
+                        <td>算出プロパティを使う</td>
+                        <td><p>{{localEmail}}</p></td>
+                    </tr>
+                    <tr>
+                        <td>メソッドで同じ内容を記載することもできるが、微妙に異なる（後述）</td>
+                        <td><p>{{localEmail2()}}</p></td>
+                    </tr>
+                </tbody>
+            </table>
+            <!-- 算出プロパティとメソッドの違い -->
+            <div>
+                <p>↓クリックを押すとメソッドの方だけ更新されて算出プロパティは更新されない</p>
+                <form>
+                    <input type="button" v-on:click="onclick" value="クリック"/>
+                </form>
+                <p>算出プロパティ：{{randomc}}</p>
+                <p>メソッド：{{randomm()}}</p>
+                <p>現在日時：{{current}}</p>
+                <p>メソッドは再描画時に常に評価されるが、算出プロパティはそれが依存するプロパティが変更されたときのみ評価される。</p>
             </div>
-            <!-- 開発バージョン、便利なコンソールの警告が含まれています -->
         </div>
-            <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-            <script src="js/sokushu-vue.js"></script>
-        </body>
-        </html>
+        <div id="app2" style="background-color: #0bd6c5;">
+            <h2 style="text-align: center">イベント処理</h2>
+            <button class="btn btn-primary" v-on:click.once="onclick('ボタンが押された',$event)">現在時刻を表示</button>{{message}}
+            <p>※v-on:click.onceと指定しているので一回しか使えない</p>
+            <div id="rightClickArea" v-on:click.right="rightclick">
+                <form>
+                    <label for="name">氏名</label>
+                    <input type="text" id="name" v-on:keyup.esc="clear" v-model="name"/>
+                    ※[Esc]でクリア
+                </form>
+                <form>
+                    <label for="inputmessage">メッセージ：</label>Ctrl + H でヘルプが出る<br/>
+                    <textarea id="inputmessage" v-on:keyup.control.exact.72="help" v-model="inputmessage">
+                    </textarea>
+                </form>
+            </div>
+        </div>
+        <div id="app3" style="background-color:rgb(214, 253, 217);">
+            <h2 style="text-align: center">フォーム開発</h2>
+            <form>
+                <label for="name">氏名：</label>
+                <input type="text" id="name" v-model="yourName" />
+            </form>
+            <div>こんにちは、{{yourName}}さん！</div>
+            <p>↑入力フォームと連動する（双方向バインディング）</p>
+            <form>
+                <label for="man">男性</label>
+                <input type="radio" id="man" value="男性" v-model="gender"/>
+                <br/>
+                <label for="woman">女性</label>
+                <input type="radio" id="woman" value="女性" v-model="gender"/>
+                <br/>
+                <label for="other">その他</label>
+                <input type="radio" id="other" value="その他" v-model="gender"/>
+                <br/> 
+            </form>
+            <p>性別：{{gender}}</p>
+            <form>
+                <label for="agree">同意する：</label>
+                <input type="checkbox" id="agree" v-model="agree" true-value="◯" false-value="×" />
+            </form>
+            <div>回答：{{agree}}</div>
+            <div>文字列：{{agreeStr}}</div>
+            <form>
+                <div>使える言語は？（複数回答可）</div>
+                <label for="japanese">日本語</label>
+                <input type="checkbox" id="japanese" value="日本語" v-model="language" />
+                <label for="english">英語</label>
+                <input type="checkbox" id="english" value="英語" v-model="language"/>
+                <label for="german">ドイツ語</label>
+                <input type="checkbox" id="german" value="ドイツ語" v-model="language" />
+            </form>
+            <p>回答：{{language}}</p>
+            <form>
+                <select v-model="pglang" multiple size="5">
+                    <option value="">得意な言語は？（複数選択可）</option>
+                    <option>Java</option>
+                    <option>C++</option>
+                    <option>Ruby</option>
+                    <option>JavaScript</option>
+                    <option>Python</option>
+                </select>
+            </form>
+            <p>回答：{{pglang}}</p>
+            <form>
+                <label for="kb">1KB</label>
+                <input type="radio" id="kb" v-model="unit" v-on:change="onchange" v-bind:value="{ name:'キロバイト', size: 1024}" /><br>
+                <label for="mb">1MB</label>
+                <input type="radio" id="mb" v-model="unit" v-on:change="onchange" v-bind:value="{ name:'メガバイト', size: 1048576}" /><br>
+                <label for="gb">1GB</label>
+                <input type="radio" id="gb" v-model="unit" v-on:change="onchange" v-bind:value="{ name:'ギガバイト', size: 1073742000}" /><br> 
+            </form>
+            <form>
+                <label for="height">身長：</label>
+                <input type="text" id="height" v-model.number="height" v-on:change="onchange2" />
+            </form>
+            <form>
+                <label for="text">トリム対象テキスト：</label>
+                <input tyoe="text" id="text" v-model.trim="text" v-on:change="onchange3" />
+            </form>
+            <div>トリム結果：{{text}}</div>
+            <form>
+                <label for="lazyText">バインドの遅延（lazy）</label>
+                <input type="text" id="lazyText" v-model.lazy="lazyText"/>
+            </form>
+            <div>フォーカスアウト時点でバインドする：{{lazyText}}</div>
+            <form>
+                <label for="element">配列に入れたいものをセミコロン区切りで入力：</label><br>
+                <textarea v-bind:value="elements.join(';')" v-on:input="elements=$event.target.value.split(';')"></textarea>
+            </form>
+            <ul>
+                <li v-for="element in elements">
+                    {{element}}
+                </li>
+            </ul>
+        </div>
+    </div>
+    <!-- 開発バージョン、便利なコンソールの警告が含まれています -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="js/practice.js"></script>
+</body>
+</html>
