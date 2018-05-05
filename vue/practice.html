@@ -83,6 +83,7 @@
             <button class="btn btn-primary" v-on:click.once="onclick('ボタンが押された',$event)">現在時刻を表示</button>{{message}}
             <p>※v-on:click.onceと指定しているので一回しか使えない</p>
             <div id="rightClickArea" v-on:click.right="rightclick">
+                <p>このエリアで右クリックするとメッセージが表示される</p>
                 <form>
                     <label for="name">氏名</label>
                     <input type="text" id="name" v-on:keyup.esc="clear" v-model="name"/>
@@ -165,8 +166,8 @@
             </form>
             <div>フォーカスアウト時点でバインドする：{{lazyText}}</div>
             <form>
-                <label for="element">配列に入れたいものをセミコロン区切りで入力：</label><br>
-                <textarea v-bind:value="elements.join(';')" v-on:input="elements=$event.target.value.split(';')"></textarea>
+                <label for="elementsarea">配列に入れたいものをセミコロン区切りで入力：</label><br>
+                <textarea id="elementsarea" v-bind:value="elements.join(';')" v-on:input="elements=$event.target.value.split(';')"></textarea>
             </form>
             <ul>
                 <li v-for="element in elements">
