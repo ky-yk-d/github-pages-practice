@@ -95,4 +95,55 @@ var app3 = new Vue({
             console.log('トリムした結果は、「' + this.text + '」です。')
         }
     }
-})
+});
+
+var app4 = new Vue({
+    el: '#app4',
+    data: {
+        toggle: true,
+        season: '',
+        books: [
+            {
+                author: '森鴎外',
+                title: '阿部一族・舞姫',
+                publisher: '新潮社'
+            },
+            {
+                author: '松浦理英子',
+                title: 'ナチュラル・ウーマン',
+                publisher: '河出書房'
+            },
+            {
+                author: 'ショーペンハウアー',
+                title: '意志と表象としての世界I',
+                publisher: '中央公論新社'
+            }
+        ],
+        person: {
+            name: '名無しさん',
+            age: 25,
+            mail: 'nanashi@example.com'
+        },
+        machines: [
+            {
+                name: 'iPhone',
+                price: 60000
+            },
+            {
+                name: 'Gameboy',
+                price: 5000
+            },
+            {
+                name: 'PlayStation',
+                price: 20000
+            }
+        ]
+    },
+    computed: {
+        cheapMachines: function(){
+            return this.machines.filter(function(m){
+                return m.price < 30000;
+            })
+        }
+    }
+});

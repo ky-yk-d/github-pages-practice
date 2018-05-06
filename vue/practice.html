@@ -181,6 +181,56 @@
                 </li>
             </ul>
         </div>
+        <div id="app4" style="background-color: lightcoral">
+            <form>
+                <label for="show">表示／非表示</label>
+                <input type="checkbox" id="show" v-model="toggle" />
+            </form>
+            <div id="panel" v-if="toggle">
+                <h3>toggleの値に応じて切り替える v-if</h3>
+                <div>toggle===trueの場合</div>
+            </div>
+            <div v-else>toggle===falseの場合</div>
+            <div v-show="toggle">要素としては残る</div>
+            <form>
+                <select v-model="season">
+                    <option value="">季節を選択してください。</option>
+                    <option value="spring">春</option>
+                    <option value="summer">夏</option>
+                    <option value="automn">秋</option>
+                    <option value="winter">冬</option>
+                </select>
+            </form>
+            <div v-if="season==='spring'">春は曙</div>
+            <div v-else-if="season==='summer'">夏は夜</div>
+            <div v-else-if="season==='automn'">秋は夕暮れ</div>
+            <div v-else-if="season==='winter'">冬はつとめて</div>
+            <div v-else>未選択です</div>
+            <p>配列の内容を列挙する </p>
+            <table class="table table-dark">
+                <th>No</th><th>著者</th><th>書名</th><th>出版社</th>
+                <tr v-for="(b, index) in books">
+                    <td>{{index+1}}</td>
+                    <td>{{b.author}}</td>
+                    <td>{{b.title}}</td>
+                    <td>{{b.publisher}}</td>
+                </tr>
+            </table>
+            <p>オブジェクトの内容を列挙する</p>
+            <ul v-for="(value, key, i) in person">
+                <li>{{i+1}}, {{key}} : {{value}}</li>
+            </ul>
+            <p>数値を列挙する</p>
+            <span v-for="i in 5">{{i}}<br></span>
+            <p>配列の絞り込み</p>
+            <table class="table table-striped">
+                <th>名称</th><th>価格</th>
+                <tr v-for="m in cheapMachines">
+                    <td>{{m.name}}</td>
+                    <td>{{m.price}}円</td>
+                </tr>
+            </table>
+        </div>
     </div>
     <!-- 開発バージョン、便利なコンソールの警告が含まれています -->
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
