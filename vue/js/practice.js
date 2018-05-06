@@ -137,6 +137,11 @@ var app4 = new Vue({
                 name: 'PlayStation',
                 price: 20000
             }
+        ],
+        list: [
+            'baseball',
+            'football',
+            'golf'
         ]
     },
     computed: {
@@ -144,6 +149,11 @@ var app4 = new Vue({
             return this.machines.filter(function(m){
                 return m.price < 30000;
             })
+        }
+    },
+    methods: {
+        onclick: function(){
+            Vue.set(this.list, 1, 'tabletennis');
         }
     }
 });

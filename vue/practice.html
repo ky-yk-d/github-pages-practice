@@ -230,6 +230,19 @@
                     <td>{{m.price}}円</td>
                 </tr>
             </table>
+            <p>templeteの利用</p>
+            <template v-for="b in books">
+                <header style="text-align: center">{{b.author}}</header>
+                <div>{{b.title}}</div>
+                <footer>{{b.publisher}}</footer>
+            </template>
+            <p>Vue.set()による配列要素の更新</p>
+            <form>
+                <input type="button" value="変更" v-on:click="onclick" />
+            </form>
+            <ul>
+                <li v-for="item in list">{{item}}</li>
+            </ul>
         </div>
     </div>
     <!-- 開発バージョン、便利なコンソールの警告が含まれています -->
