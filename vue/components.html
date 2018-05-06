@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- Global site tag (gtag.js) - Google Analytics --> <script async src="https://www.googletagmanager.com/gtag/js?id=UA-118641740-2"></script> <script> window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'UA-118641740-2'); </script>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>コンポーネントを利用してみる</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+</head>
+<body>
+    <div id="app7">
+        <P>グローバル登録されたコンポーネントを利用</P>
+        <my-grobal-hello></my-grobal-hello>
+        <p>ローカル登録されたコンポーネントを利用</p>
+        <my-local-hello></my-local-hello>
+        <p>パラメータ付きコンポーネント</p>
+        <!-- 属性名はケバブケース-->
+        <my-param-hello your-name="瀧くん"></my-param-hello>
+        <!-- v-bindを使う場合はシングルクオートでも囲む（数値として渡すなら不要）-->
+        <my-param-hello v-bind:your-name="'三葉'"></my-param-hello>
+        <my-counter v-bind:init="6"></my-counter>
+        <my-slot>JavaScript</my-slot>
+        <multi-slot>
+            <h3 slot="header">header要素</h3>
+            <p>無名要素1</p>
+            <span slot="footer">footer要素1</span>
+            <p>無名要素2</p>
+            <a slot="footer" href="https://twitter.com/ky_yk_d" target="_blank">footer要素2</a>
+        </multi-slot>
+    </div>
+    <!-- 開発バージョン、便利なコンソールの警告が含まれています -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="js/components.js"></script>
+</body>
+</html>
