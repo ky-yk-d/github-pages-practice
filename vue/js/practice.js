@@ -157,3 +157,31 @@ var app4 = new Vue({
         }
     }
 });
+
+var app5 = new Vue({
+    el:'#app5',
+    data: {
+        attrs:{
+            size:12,
+            maxlength: 15,
+            required: true
+        },
+        text: '要素オブジェクトのプロパティ',
+        name: 'ゲスト',
+        styleBinding: 'Vue.jsのスタイルバインディング',
+        multiStyle: '配列形式で複数のオブジェクトを渡す',
+        color: {
+            backgroundColor: 'Blue',
+            color: 'White'
+        },
+        big: {
+            fontSize: '2.0em'
+        },
+        url:'https://twitter.com/ky_yk_d',
+        message: 'v-bind:classの実験',
+        isChange: true,
+        colorClass: 'color',
+        frameClass: 'frame',
+        vCloakSample: 'cssでv-cloak付きの要素を非表示扱いにしておけばMustache構文が表示されずに済む'
+    }
+});

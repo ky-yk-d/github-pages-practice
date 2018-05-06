@@ -3,3 +3,18 @@
     background-color: black;
     color: white;
 }
+.big {
+    font-size: 3.0em;
+}
+.color {
+    background-color: aqua;
+    color: yellowgreen;
+}
+.frame {
+    border-color: violet;
+    border-width: 5px;
+    border-style: solid dotted double;
+}
+[v-cloak]{
+    display: none;
+}

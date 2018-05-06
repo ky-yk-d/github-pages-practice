@@ -182,6 +182,7 @@
             </ul>
         </div>
         <div id="app4" style="background-color: lightcoral">
+            <h2 style="text-align: center">条件分岐とループ</h2>
             <form>
                 <label for="show">表示／非表示</label>
                 <input type="checkbox" id="show" v-model="toggle" />
@@ -243,6 +244,39 @@
             <ul>
                 <li v-for="item in list">{{item}}</li>
             </ul>
+        </div>
+        <div id="app5" v-bind:style="{backgroundColor:'Yellow'}">
+            <h2 v-bind:style="{textAlign:'center'}">もっとデータバインディング</h2>
+            <form>
+                <label for="message">メッセージ：</label>
+                <input type="text" id="message" v-bind="attrs" />
+            </form>
+            <div v-bind:text-content.prop="text"></div>
+            <form>
+                <label for="name">氏名：</label>
+                <input type="text" id="name" v-model="name"/>
+            </form>
+            <div v-once>こんにちは、{{name}}さん！（v-once）</div>
+            <div>こんにちは、{{name}}さん！（通常）</div>
+            <div v-bind:style="{color:'Red', 'font-size':'1.5em'}">
+                {{styleBinding}}
+            </div>
+            <div v-bind:style="[color, big]">
+                {{multiStyle}}
+            </div>
+            <a v-bind:style="{'tap-highlight-color':'Yellow'}" v-bind:href="url">
+                {{url}}
+            </a>
+            <div class="big" v-bind:class="{color:true, frame: isChange}">
+                {{message}}：静的クラスと並存する
+            </div>
+            <div v-bind:class="[colorClass, frameClass]">
+                {{message}}：文字列配列として渡す例
+            </div>
+            <div v-bind:class="[colorClass,{frame:isChange}]">
+                {{message}}：文字列／オブジェクトの配列として渡す例
+            </div>
+            <p v-cloak>{{vCloakSample}}</p>
         </div>
     </div>
     <!-- 開発バージョン、便利なコンソールの警告が含まれています -->
