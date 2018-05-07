@@ -29,8 +29,22 @@
             <a slot="footer" href="https://twitter.com/ky_yk_d" target="_blank">footer要素2</a>
         </multi-slot>
     </div>
+    <div id="app8">
+        Angular、React、<span v-highlight="color">Vue</span>：通常のハイライト<br>
+        Angular、React、<span v-mouseenter-highlight="color">Vue</span>:マウスエンターでハイライト<br>
+        <form>
+            <label for="name">URL:</label>ß
+            <input v-validate="'required|url'" data-vv-as="URL" id="url" name="url" />
+        </form>
+        <span v-if="errors.has('url')">
+            {{errors.first('url')}}
+        </span>
+    </div>
     <!-- 開発バージョン、便利なコンソールの警告が含まれています -->
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <!-- Vee-Validate -->
+    <script src="https://cdn.jsdelivr.net/npm/vee-validate@latest/dist/vee-validate.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vee-validate@latest/dist/locale/ja.js"></script>
     <script src="js/components.js"></script>
 </body>
 </html>

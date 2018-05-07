@@ -63,3 +63,31 @@ var app7 = new Vue({
         'my-local-hello': MyHello
     }
 });
+Vue.directive('highlight',{
+    // el ディレクティブが適用された要素
+    // binding バインド情報オブジェクト
+    // vnode 現在の仮想ノード
+    // 変更前の仮想ノード
+    // [bind, inserted, ...] 実行タイミング
+    // ':'以下 フック関数
+    bind:(el, binding, vnode,oldVnode) => {
+        el.style.backgroundColor = binding.value;
+    }
+});
+Vue.directive('mouseenter-highlight',{
+    bind: (el, binding) =>{
+        el.addEventListener('mouseenter',function(){
+            this.style.backgroundColor = binding.value;
+        }, false);
+        el.addEventListener('mouseleave',function(){
+            this.style.backgroundColor = '';
+        }, false);
+    }
+});
+Vue.use(VeeValidate, {locale: 'ja'});
+var app8 = new Vue({
+    el: '#app8',
+    data:{
+        color: 'Yellow'
+    }
+})
