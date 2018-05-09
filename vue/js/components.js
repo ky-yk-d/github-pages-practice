@@ -84,14 +84,7 @@ Vue.directive('mouseenter-highlight',{
         }, false);
     }
 });
-Vue.use(VeeValidate, {locale: 'ja'});
-var app8 = new Vue({
-    el: '#app8',
-    data:{
-        color: 'Yellow'
-    }
-})
-
+// 自作プラグイン
 var MyUtil = {
     install: function(Vue, options){
         // numberフィルター
@@ -101,3 +94,11 @@ var MyUtil = {
     }
 };
 Vue.use(MyUtil);
+Vue.use(VeeValidate, {locale: 'ja'});
+var app8 = new Vue({
+    el: '#app8',
+    data:{
+        color: 'Yellow'
+    }
+})
+
