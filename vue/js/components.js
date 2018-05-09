@@ -91,3 +91,13 @@ var app8 = new Vue({
         color: 'Yellow'
     }
 })
+
+var MyUtil = {
+    install: function(Vue, options){
+        // numberフィルター
+        Vue.filter('number', function(value, dec){
+            return value.toFixed(dec);
+        });
+    }
+};
+Vue.use(MyUtil);
